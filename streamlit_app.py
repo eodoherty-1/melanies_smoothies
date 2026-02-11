@@ -1,7 +1,7 @@
 # Import python packages
 import streamlit as st
 from snowflake.snowpark.functions import col
-
+import requests
 
 # Write directly to the app
 st.title(f":cup_with_straw: Customise your Smoothie :cup_with_straw:")
@@ -55,3 +55,7 @@ if ingredients_list:
             st.success('Your Smoothie is ordered!', icon="✅")
         else:
             st.error('Error: Please Enter a Name for the Order')
+
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_response.json())
+
